@@ -1,4 +1,4 @@
-    <p class="center" *ngIf="!results; else fallback"> Please enter some values and press 'Calculate'</p>
+<p class="center" *ngIf="!results; else fallback"> Please enter some values and press 'Calculate'</p>
 <ng-template #fallback >
     <table class="center">
         <thead>
@@ -13,10 +13,10 @@
         <tbody>
             <tr *ngFor="let result of results; trackBy: trackByYear">
                 <td>{{ result.year }}</td>
-                <td>{{ result.valueEndOfYear }}</td>
-                <td>{{ result.interest }}</td>
-                <td>{{ result.totalInterest }}</td>
-                <td>{{ result.totalAmountInvested }}</td>
+                <td>{{ result.valueEndOfYear | currency }}</td>
+                <td>{{ result.interest | currency }}</td>
+                <td>{{ result.totalInterest | currency }}</td>
+                <td>{{ result.totalAmountInvested | currency }}</td>
             </tr>
         </tbody>
     </table>
