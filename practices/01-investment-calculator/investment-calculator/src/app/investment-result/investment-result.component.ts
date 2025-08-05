@@ -1,10 +1,9 @@
-import { CommonModule } from '@angular/common';
-import { Component, computed, inject, Input } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { InvestmentService } from '../investment.service';
 
 @Component({
   selector: 'app-investment-result',
-  imports: [CommonModule],
+  standalone: false,
   templateUrl: './investment-result.component.html',
   styleUrl: './investment-result.component.css'
 })
