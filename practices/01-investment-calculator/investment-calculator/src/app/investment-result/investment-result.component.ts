@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { InvestmentService } from '../investment.service';
 
 @Component({
   selector: 'app-investment-result',
@@ -8,14 +9,12 @@ import { Component, Input } from '@angular/core';
   styleUrl: './investment-result.component.css'
 })
 export class InvestmentResultComponent {
-  @Input() results?: {
-    year: number,
-    interest: number,
-    valueEndOfYear: number,
-    annualInvestment: number,
-    totalInterest: number,
-    totalAmountInvested: number,
-  }[]
+  private investmentService = inject(InvestmentService);
+
+  get results()
+  {
+    return this.investmentService.resultData;
+  }
 
   trackByYear(index: number, item: any): number {
     return item.year; // Unique identifier
