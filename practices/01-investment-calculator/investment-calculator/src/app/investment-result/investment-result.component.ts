@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, computed, inject, Input } from '@angular/core';
 import { InvestmentService } from '../investment.service';
 
 @Component({
@@ -11,10 +11,10 @@ import { InvestmentService } from '../investment.service';
 export class InvestmentResultComponent {
   private investmentService = inject(InvestmentService);
 
-  get results()
-  {
-    return this.investmentService.resultData;
-  }
+
+  results = computed(() => this.investmentService.resultData());
+   //this.results = this.investmentService.resultData.asReadonly(); -> another way of readOnly signal
+  
 
   trackByYear(index: number, item: any): number {
     return item.year; // Unique identifier
