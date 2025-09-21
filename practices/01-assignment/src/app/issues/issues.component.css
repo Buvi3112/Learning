@@ -1,0 +1,8 @@
+.center {
+    text-align: center;
+    padding: auto;
+}
+
+.container label{
+    width: 500px;
+}

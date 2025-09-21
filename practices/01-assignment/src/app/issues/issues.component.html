@@ -1,0 +1,69 @@
+<h1>Demonstration of Built-in directives and Data Binding</h1>
+
+<h3>Issue List</h3>
+
+<table border="1" *ngIf="issues_list && issues_list.length else elseBlock">
+    <thead>
+        <td class="center">
+            Issue Description
+        </td>
+        <td class="center">
+            Severity
+        </td>
+        <td class="center">
+            Status
+        </td>
+    </thead>
+    <tbody>
+        <tr *ngFor="let issue of issues_list; index as i">
+            <td>{{issue.description}}</td>
+            <td>{{issue.severity}}</td>
+            <td>{{issue.status}}</td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #elseBlock><p>No Issues are Reported</p></ng-template>
+
+<br>
+<br>
+
+<form class="container">
+    <table>
+        <tr>
+            <td>
+                <label for="Description">Description : </label>
+            </td>
+            <td>
+                <input type="text" name="Description" [(ngModel)]="Description"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="Severity">Severity : </label>
+            </td>
+            <td>
+                <select name="Severity" [(ngModel)]="Severity">
+                    <option value="Minor">Minor</option>
+                    <option value="Major">Major</option>
+                    <option value="Critical">Critical</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="Status">Status : </label>
+            </td>
+            <td>
+                <input type="radio" value="Open" name="Status" [(ngModel)]="Status"/>
+                <label for="Open">Open</label>
+                <input type="radio" value="In Progress" name="Status" [(ngModel)]="Status"/>
+                <label for="In Progress">In Progress</label>
+                <input type="radio" value="Closed" name="Status" [(ngModel)]="Status"/>
+                <label for="Closed">Closed</label>
+            </td>
+        </tr>
+        <tr>
+            <button type="button" name="Add Issue" (click)="onAddIssue()">Add Issue</button>
+        </tr>
+    </table> 
+</form>
