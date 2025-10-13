@@ -1,1 +1,6 @@
-<app-issues></app-issues>
+<h1>Demonstration of Obtaining data from server through a service</h1>
+
+<div *ngIf="newIssue.id">
+  <p >Recently Added issue : {{newIssue.description}} , {{newIssue.severity}}, {{newIssue.status}}</p>
+</div>
+<app-issues [applicationName] = applicationName (issue)="onAdd($event)"></app-issues>
