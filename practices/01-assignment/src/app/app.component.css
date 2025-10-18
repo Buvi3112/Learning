@@ -9,3 +9,13 @@ p {
 :host ::ng-deep td {
     color: blue;
 }
+
+:host ::ng-deep a {
+    text-decoration: none;
+    color: blue;
+}
+
+a.active {
+    color: red;
+    font-weight: bold;
+}

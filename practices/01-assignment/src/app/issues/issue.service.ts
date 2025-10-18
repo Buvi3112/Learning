@@ -20,8 +20,20 @@ export class IssueService {
     return this.http.get(this._issueURL)
   }
 
+  getIssuesByID(id:number) {
+    return this.http.get(this._issueURL + "/" + id);
+  }
+
   addIssues(issues:Issues){
     console.log(issues);
     return this.http.post(this._issueURL, issues, this.httpOptions);
+  }
+
+  updateIssues(issues:Issues){
+    return this.http.put(this._issueURL + "/" + issues.id, issues, this.httpOptions);
+  }
+
+  deleteIssue(id:number){
+    return this.http.delete(this._issueURL + "/" + id);
   }
 }

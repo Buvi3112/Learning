@@ -1,0 +1,41 @@
+<div class="container">
+    <h1>Add Issue</h1>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row mt-3">
+            <label class="col-md-5" for="Description">Description : </label>
+            <div>
+                <input class="col-md-8 mt-2" type="text" formControlName="Description" name="Description" required minlength="5"/>
+                <div *ngIf="myForm.get('Description')?.invalid && (myForm.get('Description')?.dirty || myForm.get('Description')?.touched)" class="alert alert-danger col-md-8">
+                    <div *ngIf="myForm.get('Description')?.errors?.['required']">
+                        Description is required
+                    </div>
+                    <div *ngIf="myForm.get('Description')?.errors?.['minlength']">
+                        Description must be atleast 5 characters length.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row mt-3">
+            <label class="col-md-5" for="Severity" >Severity : </label>
+            <div >
+                <select class="col-md-4 mt-2" formControlName="Severity" name="Severity" aria-placeholder="Minor">
+                    <option value="Minor">Minor</option>
+                    <option value="Major">Major</option>
+                    <option value="Critical">Critical</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row mt-3">
+            <label for="Status">Status : </label>
+            <div>
+                <input class="radioButton" formControlName="Status" type="radio" value="Open" name="Status"/>
+                <label class="radioButton" for="Open">Open</label>
+                <input class="radioButton" formControlName="Status" type="radio" value="In Progress" name="Status"/>
+                <label class="radioButton" for="In Progress">In Progress</label>
+                <input class="radioButton" formControlName="Status" type="radio" value="Closed" name="Status"/>
+                <label class="radioButton" for="Closed">Closed</label>
+            </div>
+        </div>
+        <button type="submit" class="mt-3 btn btn-success" [disabled]="myForm.invalid">Submit</button>
+    </form>
+</div>

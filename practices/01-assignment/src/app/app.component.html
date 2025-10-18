@@ -1,6 +1,13 @@
-<h1>Demonstration of Obtaining data from server through a service</h1>
+<!--h1>Demonstration of Obtaining data from server through a service</h1>
 
 <div *ngIf="newIssue.id">
   <p >Recently Added issue : {{newIssue.description}} , {{newIssue.severity}}, {{newIssue.status}}</p>
 </div>
-<app-issues [applicationName] = applicationName (issue)="onAdd($event)"></app-issues>
+<app-issues [applicationName] = applicationName (issue)="onAdd($event)"></app-issues-->
+
+
+<nav>
+  <a style="padding-right: 20px;" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact : true}">About</a>
+  <a routerLink="issues" routerLinkActive="active">Issues</a>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,44 @@
+<div class="container">
+    <h1>Edit Issue</h1>
+    <form *ngIf="dataLoaded" [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row mt-3">
+            <label class="col-md-5" for="description">description : </label>
+            <div>
+                <input class="col-md-8 mt-2" type="text" formControlName="description" name="description" required minlength="5"/>
+                <div *ngIf="editForm.get('description')?.invalid && (editForm.get('description')?.dirty || editForm.get('description')?.touched)" class="alert alert-danger col-md-8">
+                    <div *ngIf="editForm.get('description')?.errors?.['required']">
+                        description is required
+                    </div>
+                    <div *ngIf="editForm.get('description')?.errors?.['minlength']">
+                        description must be atleast 5 characters length.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row mt-3">
+            <label class="col-md-5" for="severity" >severity : </label>
+            <div >
+                <select class="col-md-4 mt-2" formControlName="severity" name="severity" aria-placeholder="Minor">
+                    <option value="Minor">Minor</option>
+                    <option value="Major">Major</option>
+                    <option value="Critical">Critical</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row mt-3">
+            <label for="status">status : </label>
+            <div>
+                <input class="radioButton" formControlName="status" type="radio" value="Open" name="status"/>
+                <label class="radioButton" for="Open">Open</label>
+                <input class="radioButton" formControlName="status" type="radio" value="In Progress" name="status"/>
+                <label class="radioButton" for="In Progress">In Progress</label>
+                <input class="radioButton" formControlName="status" type="radio" value="Closed" name="status"/>
+                <label class="radioButton" for="Closed">Closed</label>
+            </div>
+        </div>
+        <button type="submit" class="mt-3 btn btn-success" [disabled]="editForm.invalid">Submit</button>
+        <button type="button" class="mt-3 btn btn-success margin-left: 15px;" (click)="onCancel()">Cancel</button>
+    </form>
+    <div *ngIf="!dataLoaded">Loading form...</div>
+</div>
+

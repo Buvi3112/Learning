@@ -13,12 +13,6 @@
       "status": "In Progress"
     },
     {
-      "id": 3,
-      "description": "After adding the new Entry the page is not automatically redirected to the view Page",
-      "severity": "Major",
-      "status": "Closed"
-    },
-    {
       "id": 4,
       "description": "qweqweqwe",
       "severity": "Minor",
@@ -27,8 +21,14 @@
     {
       "id": 5,
       "description": "on clicking Add, product is not added to the cart",
-      "severity": "Critical",
-      "status": "Open"
+      "status": "In Progress",
+      "severity": "Critical"
+    },
+    {
+      "id": 6,
+      "description": "search filter does not display proper results",
+      "status": "In Progress",
+      "severity": "Minor"
     }
   ]
 }

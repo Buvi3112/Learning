@@ -13,8 +13,6 @@ export class IssuesComponent implements OnInit{
   Description: string = "";
   Status: string = "";
   Severity: string = "";
-  @Input() applicationName!: string;
-  @Output() issue : EventEmitter<any> = new EventEmitter();
   issues_list!: Issues[];
 
   constructor(private issueService:IssueService) {}
@@ -30,24 +28,13 @@ export class IssuesComponent implements OnInit{
     console.log(this.issues_list)
   }
 
-  onAddIssue()
-  {
-    console.log(this.issues_list.length);
-    const newIssue = {
-      id: this.issues_list.length+1,
-      description: this.Description,
-      severity: this.Severity,
-      status: this.Status
-    };
-    this.issueService.addIssues(newIssue).subscribe({
-      next: (data:any) => this.get_issues(),
-      error: err => console.log(err)
-    });
-    this.issue.emit(newIssue);
-
-    this.Description = "";
-    this.Severity = "";
-    this.Status = "";
+  onDelete(id:number) {
+    if (confirm('Are you sure you want to delete this issue?')){
+      this.issueService.deleteIssue(id).subscribe({
+        next: (issues_list:any) => this.get_issues(),
+        error: err => console.log(err)
+      })
+    }
   }
 
 }

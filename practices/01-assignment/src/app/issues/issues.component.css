@@ -1,12 +1,3 @@
-.center {
-     text-align: center;
-     padding: auto;
-    color:blueviolet;
- }
- 
- .container label{
-     width: 500px;
-}
 
 h3 {
     color:darkcyan;
@@ -14,4 +5,5 @@ h3 {
 
 button {
     color: lightsalmon;
+    margin-left: 15px;
  }
